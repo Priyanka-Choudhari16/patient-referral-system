@@ -1,0 +1,19 @@
+app_new_patient:
+    path: /new-patients
+    controller: App\Controller\PatientController::newPatient
+    methods: [GET,POST]
+
+app_accepted_patients:
+    path: /patient/accept/{id}
+    controller: App\Controller\PatientController::acceptedPatients
+    methods: GET
+    
+app_rejected_patients:
+    path: /patient/reject/{id}
+    controller: App\Controller\PatientController::rejectedPatients
+    methods: GET
+
+app_patient_review:
+    path: /review-patients
+    controller: App\Controller\PatientController::reviewPatients
+    methods: GET

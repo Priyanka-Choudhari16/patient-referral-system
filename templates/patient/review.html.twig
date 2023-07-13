@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>Patient Referrals</h1>
+
+	<h2>Referred Patients</h2>
+
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>First Name</th>
+			<th>Surname</th>
+			<th>Date of Birth</th>
+			<th>Email</th>
+			<th>Mobile Phone</th>
+			<th>Address</th>
+			<th>Action</th>
+		</tr>
+		{% if referredPatients is not empty %}
+			{% for patient in referredPatients %}
+				<tr>
+					<td>{{ patient.title }}</td>
+					<td>{{ patient.firstName }}</td>
+					<td>{{ patient.surname }}</td>
+					<td>{{ patient.dob|date('Y-m-d') }}</td>
+					<td>{{ patient.email }}</td>
+					<td>{{ patient.phone }}</td>
+					<td>{{ patient.address }}</td>
+					<td>
+						<a href="{{ path('app_accepted_patients', {'id': patient.id}) }}">Accept</a>
+						<a href="{{ path('app_rejected_patients', {'id': patient.id}) }}">Reject</a>
+					</td>
+				</tr>
+			{% endfor %}
+		{% endif %}
+	</table>
+
+	<h2>Accepted Patients</h2>
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>First Name</th>
+			<th>Surname</th>
+			<th>Date of Birth</th>
+			<th>Email</th>
+			<th>Mobile Phone</th>
+			<th>Address</th>
+		</tr>
+		{% if acceptedPatients is not empty %}
+			{% for patient in acceptedPatients %}
+				<tr>
+					<td>{{ patient.title }}</td>
+					<td>{{ patient.firstName }}</td>
+					<td>{{ patient.surname }}</td>
+					<td>{{ patient.dob|date('Y-m-d') }}</td>
+					<td>{{ patient.email }}</td>
+					<td>{{ patient.phone }}</td>
+					<td>{{ patient.address }}</td>
+				</tr>
+			{% endfor %}
+		{% endif %}
+	</table>
+
+	<h2>Rejected Patients</h2>
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>First Name</th>
+			<th>Surname</th>
+			<th>Date of Birth</th>
+			<th>Email</th>
+			<th>Mobile Phone</th>
+			<th>Address</th>
+		</tr>
+		{% if referredPatients is not empty %}
+			{% for patient in rejectedPatients %}
+				<tr>
+					<td>{{ patient.title }}</td>
+					<td>{{ patient.firstName }}</td>
+					<td>{{ patient.surname }}</td>
+					<td>{{ patient.dob|date('Y-m-d') }}</td>
+					<td>{{ patient.email }}</td>
+					<td>{{ patient.phone }}</td>
+					<td>{{ patient.address }}</td>
+				</tr>
+			{% endfor %}
+		{% endif %}
+	</table>
+{% endblock %}
